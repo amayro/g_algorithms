@@ -21,30 +21,30 @@ task_section(1)
 если он ввел 0 в качестве делителя.
 """
 
-# while True:
-#     data = input('Введите числа и знак операции через пробел (3 2 -). 0 для выхода качестве знака операции: ')
-#     arg_1, arg_2, operation = data.split(" ")
-#     arg_1, arg_2 = int(arg_1), int(arg_2)
-#
-#     if operation == '0':
-#         break
-#
-#     if operation in ('+', '-', '*', '/'):
-#         if operation == '+':
-#             result = arg_1 + arg_2
-#         elif operation == '-':
-#             result = arg_1 - arg_2
-#         elif operation == '*':
-#             result = arg_1 * arg_2
-#         elif operation == '/':
-#             if arg_2 == 0:
-#                 print(f'На ноль делить нельзя')
-#                 continue
-#             else:
-#                 result = arg_1 / arg_2
-#         print(f'Результат: {result}')
-#     else:
-#         print("Неверный знак операции!")
+while True:
+    data = input('Введите числа и знак операции через пробел (3 2 -). 0 для выхода качестве знака операции: ')
+    arg_1, arg_2, operation = data.split(" ")
+    arg_1, arg_2 = int(arg_1), int(arg_2)
+
+    if operation == '0':
+        break
+
+    if operation in ('+', '-', '*', '/'):
+        if operation == '+':
+            result = arg_1 + arg_2
+        elif operation == '-':
+            result = arg_1 - arg_2
+        elif operation == '*':
+            result = arg_1 * arg_2
+        elif operation == '/':
+            if arg_2 == 0:
+                print(f'На ноль делить нельзя')
+                continue
+            else:
+                result = arg_1 / arg_2
+        print(f'Результат: {result}')
+    else:
+        print("Неверный знак операции!")
 
 
 # №2 ------------------------------------------------------------------------------------
@@ -139,21 +139,21 @@ task_section(6)
 то вывести загаданное число.
 """
 
-# secret_number = random.randint(0, 100)
-# attempt = 0
-#
-# while attempt < 10:
-#     number = int(input('Угадайте число: '))
-#     if number < secret_number:
-#         print('Больше')
-#     elif number > secret_number:
-#         print('Меньше')
-#     else:
-#         print('Верно!')
-#         break
-#     attempt += 1
-# else:
-#     print('Загаданное число', secret_number)
+secret_number = random.randint(0, 100)
+attempt = 0
+
+while attempt < 10:
+    number = int(input('Угадайте число: '))
+    if number < secret_number:
+        print('Больше')
+    elif number > secret_number:
+        print('Меньше')
+    else:
+        print('Верно!')
+        break
+    attempt += 1
+else:
+    print('Загаданное число', secret_number)
 
 
 # №7 ------------------------------------------------------------------------------------
