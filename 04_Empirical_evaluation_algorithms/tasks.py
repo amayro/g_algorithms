@@ -116,11 +116,9 @@ task_section(2)
 idx = 100
 
 
-def simple_method_1(idx):
-    n = idx * idx
-    a = []
-    for i in range(n + 1):
-        a.append(i)
+def eratosfen(idx):
+    n = idx * 100
+    a = [i for i in range(n + 1)]
 
     a[1] = 0
     i = 2
@@ -130,19 +128,14 @@ def simple_method_1(idx):
             j = i + i
             while j <= n:
                 a[j] = 0
-                j = j + i
+                j += i
         i += 1
 
-    b = []
-    for i in a:
-        if a[i] != 0:
-            b.append(a[i])
-            if len(b) == idx:
-                break
+    b = [i for i in a if i != 0]
     return b, f'{idx} по счету простое число: {b[idx - 1]}'
 
 
-def simple_method_2(idx):
+def simple_method(idx):
     n = idx
     lst = []
     first = 2
@@ -158,15 +151,27 @@ def simple_method_2(idx):
     return lst, f'{idx} по счету простое число: {lst[idx - 1]}'
 
 
-print(simple_method_1(idx)[0])
-print(simple_method_1(idx)[1])
-print(simple_method_2(idx)[0])
-print(simple_method_2(idx)[1])
+print(eratosfen(idx)[0])
+print(eratosfen(idx)[1])
+print(simple_method(idx)[0])
+print(simple_method(idx)[1])
 
 
-time_meth_1 = timeit.timeit("simple_method_1(idx)", setup="from __main__ import simple_method_1, idx", number=1000)
-time_meth_2 = timeit.timeit("simple_method_2(idx)", setup="from __main__ import simple_method_2, idx", number=1000)
+time_eratosfen = timeit.timeit("eratosfen(idx)", setup="from __main__ import eratosfen, idx", number=100)
+time_simple_method = timeit.timeit("simple_method(idx)", setup="from __main__ import simple_method, idx", number=100)
 
 print('\nЗатраченное время на исполнение '
-      f'\n{"- Используя алгоритм «Решето Эратосфена»:":25} {time_meth_1}'
-      f'\n{"- Без использования «Решета Эратосфена»:":25} {time_meth_2}')
+      f'\n{"- Используя алгоритм «Решето Эратосфена»:":25} {time_eratosfen}'
+      f'\n{"- Без использования «Решета Эратосфена»:":25} {time_simple_method}')
+
+"""
+поиск 100 числа
+Затраченное время на исполнение 
+- Используя алгоритм «Решето Эратосфена»: 0.42774433123819794
+- Без использования «Решета Эратосфена»: 0.19769966781010667
+
+поиск 1000 числа
+Затраченное время на исполнение 
+- Используя алгоритм «Решето Эратосфена»: 5.1148964428877335
+- Без использования «Решета Эратосфена»: 29.914301633241877
+"""
